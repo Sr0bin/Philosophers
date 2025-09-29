@@ -1,0 +1,12 @@
+*.o
+*.d
+*.txt
+minishell
+obj/
+.gitmodules
+.gdb_history
+philo
+compile_commands.json
+.cache
+.gdbinit
+.txt
