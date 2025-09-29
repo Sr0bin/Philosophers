@@ -6,12 +6,13 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 14:14:47 by rorollin          #+#    #+#             */
-/*   Updated: 2025/09/29 14:23:11 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/09/29 15:03:57 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 # include <stdlib.h>
+# include <pthread.h>
 
 #endif
