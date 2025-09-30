@@ -6,7 +6,7 @@
 #    By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/29 14:14:19 by rorollin          #+#    #+#              #
-#    Updated: 2025/09/30 20:45:47 by rorollin         ###   ########.fr        #
+#    Updated: 2025/09/30 20:51:14 by rorollin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SOURCES_PHILO = philo_init.c
 
 #---------------------------
 
-SOURCES_FORK = fork_init.c
+SOURCES_FORK = fork_init.c fork_pair.c
 
 #---------------------------
 

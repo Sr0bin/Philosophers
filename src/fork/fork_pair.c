@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   debug.h                                            :+:      :+:    :+:   */
+/*   fork_pair.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/30 20:33:40 by rorollin          #+#    #+#             */
-/*   Updated: 2025/09/30 20:51:26 by rorollin         ###   ########.fr       */
+/*   Created: 2025/09/30 20:48:07 by rorollin          #+#    #+#             */
+/*   Updated: 2025/09/30 20:50:23 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEBUG_H
-# define DEBUG_H
-# include "struct.h"
+#include "philo.h"
 
-void	print_forks(t_fork *fork);
-void	print_fork_pair(t_fork_pair *pair);
-#endif
+t_fork_pair	fork_pair_gen(t_fork *head, int index)
+{
+	t_fork_pair	ret;
+	int			i;
 
+	i = 0;
+	while (i < index)
+	{
+		head = head->next;
+		i++;
+	}
+	ret.left = head;
+	ret.right = head->next;
+	return (ret);
+}
