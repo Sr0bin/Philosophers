@@ -6,7 +6,7 @@
 #    By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/29 14:14:19 by rorollin          #+#    #+#              #
-#    Updated: 2025/09/30 16:41:13 by rorollin         ###   ########.fr        #
+#    Updated: 2025/09/30 20:45:47 by rorollin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,15 @@ SOURCES_NAME = main.c
 
 #---------------------------
 
-SOURCES_MUTEX = mutex_int.c
+SOURCES_MUTEX = mutex_int.c mutex_bool.c
+
+#---------------------------
+
+SOURCES_PHILO = philo_init.c
+
+#---------------------------
+
+SOURCES_FORK = fork_init.c
 
 #---------------------------
 
@@ -32,6 +40,8 @@ SOURCES_DEBUG = debug.c
 SOURCES = $(addprefix $(SOURCES_DIR)/,\
 		  $(SOURCES_NAME)\
 		  $(addprefix mutex/, $(SOURCES_MUTEX))\
+		  $(addprefix fork/, $(SOURCES_FORK))\
+		  $(addprefix philosophers/, $(SOURCES_PHILO))\
 		  $(addprefix .hidden/, $(SOURCES_DEBUG))\
 		  )
 		  

@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   debug.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/29 14:14:38 by rorollin          #+#    #+#             */
-/*   Updated: 2025/09/30 20:43:26 by rorollin         ###   ########.fr       */
+/*   Created: 2025/09/30 20:33:40 by rorollin          #+#    #+#             */
+/*   Updated: 2025/09/30 20:33:54 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#ifndef DEBUG_H
+# define DEBUG_H
+# include "struct.h"
 
-int	main(int argc, char **argv)
-{
-	t_fork	*fork;
+void	print_forks(t_fork *fork);
+#endif
 
-	fork = fork_list_create(10);
-	print_forks(fork);
-	fork_list_destroy(&fork);
-	return (EXIT_SUCCESS);
-}

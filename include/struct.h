@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 15:55:59 by rorollin          #+#    #+#             */
-/*   Updated: 2025/09/30 17:08:28 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/09/30 18:01:48 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ typedef	struct	s_fork
 	int	index;
 	t_mutex_bool	state;
 	t_fork *next;
-	t_fork *previous;
 }	t_fork;
 
 typedef struct	s_fork_pair
