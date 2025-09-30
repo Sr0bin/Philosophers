@@ -6,7 +6,7 @@
 #    By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/29 14:14:19 by rorollin          #+#    #+#              #
-#    Updated: 2025/09/29 14:21:02 by rorollin         ###   ########.fr        #
+#    Updated: 2025/09/30 16:41:13 by rorollin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,12 +21,17 @@ SOURCES_NAME = main.c
 
 #---------------------------
 
+SOURCES_MUTEX = mutex_int.c
+
+#---------------------------
+
 SOURCES_DEBUG = debug.c
 
 #---------------------------
 
 SOURCES = $(addprefix $(SOURCES_DIR)/,\
 		  $(SOURCES_NAME)\
+		  $(addprefix mutex/, $(SOURCES_MUTEX))\
 		  $(addprefix .hidden/, $(SOURCES_DEBUG))\
 		  )
 		  
