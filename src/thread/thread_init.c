@@ -6,11 +6,12 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 14:44:18 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/01 18:02:53 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/01 19:39:18 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+#include "timer.h"
 #include <pthread.h>
 
 void	*start_routine(void	*philo_struct)
@@ -24,7 +25,7 @@ void	*start_routine(void	*philo_struct)
 	gettimeofday(&crnt_time, NULL);
 	while (!time_threshold(start_time, crnt_time))
 	{
-		usleep(100);
+		granular_usleep(10000, &philo_crnt);
 		gettimeofday(&crnt_time, NULL);
 	}
 	print_philo(&philo_crnt);

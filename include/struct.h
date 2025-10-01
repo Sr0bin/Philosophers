@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 15:55:59 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/01 18:03:30 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/01 19:49:03 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 # include <stdbool.h>
 # include <sys/time.h>
 
-# define START_OFFSET 1000000
+# define START_OFFSET 800000
+# define USEC_PER_SEC 1000000
+# define SLEEP_DELTA 100
 
 typedef struct timeval t_timeval;
 typedef struct s_fork t_fork;
@@ -95,6 +97,12 @@ typedef	enum e_philo_state
 	DEAD
 }	t_philo_state;
 
+typedef struct s_timer
+{
+	t_timeval	start_time;
+	t_timeval	crnt_time;
+}	t_timer;
+
 typedef struct s_philo
 {
 	size_t			index;
@@ -103,5 +111,8 @@ typedef struct s_philo
 	t_fork_pair		pair;
 	int				meal;
 	t_context	*context;
+	t_timer		timer;
+	int	ret;
+
 }	t_philo;
 #endif

@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:01:35 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/01 17:53:57 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/01 19:36:07 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 int		time_threshold(t_timeval time_to_pass, t_timeval time_to_check)
 {
-	
 	if (time_to_pass.tv_sec == time_to_check.tv_sec)
 	{
 		if (time_to_pass.tv_usec <= time_to_check.tv_usec)
@@ -29,19 +28,21 @@ int		time_threshold(t_timeval time_to_pass, t_timeval time_to_check)
 	return (0);
 }
 
+long	time_difference(t_timeval a, t_timeval b)
+{
+	return (((b.tv_sec - a.tv_sec) * USEC_PER_SEC) + (b.tv_usec - a.tv_usec));
+}
+
 // Offset a t_timeval of the specified microseconds.
 void	offset_time(t_timeval *input, long offset)
 {
-	const	long micro_per_sec = 1000000;
-	input->tv_sec += offset / micro_per_sec;
-	input->tv_usec += offset % micro_per_sec;
-	if (input->tv_usec >= micro_per_sec)
+	input->tv_sec += offset / USEC_PER_SEC;
+	input->tv_usec += offset % USEC_PER_SEC;
+	if (input->tv_usec >= USEC_PER_SEC)
 	{
-		input->tv_sec += input->tv_sec / micro_per_sec;
-		input->tv_sec %= micro_per_sec;
+		input->tv_sec += input->tv_usec / USEC_PER_SEC;
+		input->tv_usec %= USEC_PER_SEC;
 	}
-
-	
 }
 
 t_time_const	time_init(t_input input)
