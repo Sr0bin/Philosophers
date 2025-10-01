@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:54:37 by rorollin          #+#    #+#             */
-/*   Updated: 2025/09/30 20:44:55 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/01 17:35:56 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_fork	*fork_create(int index)
 	fork = malloc(sizeof(t_fork));
 	if (fork == NULL)
 	{
-		mutex_bool_destroy(state);
+		mutex_bool_destroy(&state);
 		return (NULL);
 	}
 	*fork = (t_fork) {0};
@@ -33,9 +33,9 @@ t_fork	*fork_create(int index)
 	return (fork);
 }
 
-t_fork	*fork_list_create(int number)
+t_fork	*fork_list_create(size_t number)
 {
-	int	i;
+	size_t	i;
 	t_fork	*fork_head;
 	t_fork	*fork_crnt;
 	t_fork	*fork_next;
@@ -62,7 +62,7 @@ t_fork	*fork_destroy(t_fork **fork)
 {
 	t_mutex_bool	*ret;
 
-	ret = mutex_bool_destroy((*fork)->state);
+	ret = mutex_bool_destroy(&(*fork)->state);
 	if (ret == &(*fork)->state)
 		return (*fork);
 	(**fork) = (t_fork) {0};

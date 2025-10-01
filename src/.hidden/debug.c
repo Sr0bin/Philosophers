@@ -6,11 +6,12 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 20:33:00 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/01 16:05:41 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/01 17:35:56 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+#include <pthread.h>
 // Print function for t_mutex_int
 void	print_mutex_int(const char *name, t_mutex_int *mi)
 {
@@ -170,6 +171,9 @@ const char	*philo_state_to_string(t_philo_state state)
 // Print function for t_philo
 void	print_philo(t_philo *philo)
 {
+	int	ret;
+
+	mutex_bool_access(&philo->context->write_mutex, &ret);
 	if (!philo)
 	{
 		printf("Philo: (NULL)\n");
@@ -184,6 +188,7 @@ void	print_philo(t_philo *philo)
 		philo->pair.left ? philo->pair.left->index : -1,
 		philo->pair.right ? philo->pair.right->index : -1);
 	printf("}\n");
+	mutex_bool_unlock(&philo->context->write_mutex);
 }
 
 // Print all philosophers

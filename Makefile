@@ -6,7 +6,7 @@
 #    By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/29 14:14:19 by rorollin          #+#    #+#              #
-#    Updated: 2025/10/01 16:40:46 by rorollin         ###   ########.fr        #
+#    Updated: 2025/10/01 17:23:06 by rorollin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ SOURCES_PHILO = philo_init.c
 
 #---------------------------
 
-SOURCES_TIME = time_init.c
+SOURCES_TIME = time_init.c granular_sleep.c
 
 #---------------------------
 

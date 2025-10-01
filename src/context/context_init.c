@@ -6,11 +6,12 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 14:48:04 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/01 16:17:23 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/01 17:35:56 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+#include <pthread.h>
 
 void	*context_destroy(t_context **context_ptr)
 {
@@ -19,10 +20,14 @@ void	*context_destroy(t_context **context_ptr)
 	if (context_ptr == NULL || *context_ptr == NULL)
 		return (NULL);
 	context = *context_ptr;
+	if (context->philos != NULL)
+	{
+		thread_destroy_philo(context);
+		free(context->philos);
+	}
 	if (context->fork_head != NULL)
 		fork_list_destroy(&context->fork_head);
-	if (context->philos != NULL)
-		free(context->philos);
+	mutex_bool_destroy(&context->write_mutex);
 	free(context);
 	*context_ptr = NULL;
 	return (NULL);
@@ -32,6 +37,7 @@ t_context	*context_init(int argc, char **argv)
 {
 	t_context	*context;
 	t_param		param;
+	int	ret;
 
 	param = parsing(argc, argv);
 	context = malloc(sizeof(t_context));
@@ -44,5 +50,6 @@ t_context	*context_init(int argc, char **argv)
 		return (context_destroy(&context));
 	philo_array_populate(context);
 	context->state = PENDING;
+	context->write_mutex = mutex_bool_create(0, &ret);
 	return (context);
 }

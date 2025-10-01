@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 14:14:38 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/01 16:40:09 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/01 17:01:06 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	main(int argc, char **argv)
 	context = context_init(argc, argv);
 	print_context(context);
 	thread_creation_loop(context);
-	
 	context_destroy(&context);
 	// fork = fork_list_create(15);
 	// print_forks(fork);
