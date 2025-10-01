@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 15:56:40 by rorollin          #+#    #+#             */
-/*   Updated: 2025/09/30 17:06:33 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/01 16:20:21 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_mutex_int	mutex_int_create(int val, int *error)
 	t_mutex_int			mutex;
 	pthread_mutex_t	pmutex;
 
-	*error =pthread_mutex_init(&pmutex, NULL);
+	*error = pthread_mutex_init(&pmutex, NULL);
 	mutex.mutex = pmutex;
 	mutex.val = val;
 	return (mutex);

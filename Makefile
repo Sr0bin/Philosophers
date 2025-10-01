@@ -6,7 +6,7 @@
 #    By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/29 14:14:19 by rorollin          #+#    #+#              #
-#    Updated: 2025/09/30 20:51:14 by rorollin         ###   ########.fr        #
+#    Updated: 2025/10/01 16:40:46 by rorollin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,11 +25,23 @@ SOURCES_MUTEX = mutex_int.c mutex_bool.c
 
 #---------------------------
 
+SOURCES_CONTEXT = context_init.c ft_atoi.c param_init.c parsing.c
+
+#---------------------------
+
 SOURCES_PHILO = philo_init.c
 
 #---------------------------
 
+SOURCES_TIME = time_init.c
+
+#---------------------------
+
 SOURCES_FORK = fork_init.c fork_pair.c
+
+#---------------------------
+
+SOURCES_THREAD = thread_init.c
 
 #---------------------------
 
@@ -42,6 +54,9 @@ SOURCES = $(addprefix $(SOURCES_DIR)/,\
 		  $(addprefix mutex/, $(SOURCES_MUTEX))\
 		  $(addprefix fork/, $(SOURCES_FORK))\
 		  $(addprefix philosophers/, $(SOURCES_PHILO))\
+		  $(addprefix context/, $(SOURCES_CONTEXT))\
+		  $(addprefix time/, $(SOURCES_TIME))\
+		  $(addprefix thread/, $(SOURCES_THREAD))\
 		  $(addprefix .hidden/, $(SOURCES_DEBUG))\
 		  )
 		  

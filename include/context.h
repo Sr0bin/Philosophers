@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fork.h                                             :+:      :+:    :+:   */
+/*   context.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/30 17:54:41 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/01 16:18:16 by rorollin         ###   ########.fr       */
+/*   Created: 2025/10/01 15:23:37 by rorollin          #+#    #+#             */
+/*   Updated: 2025/10/01 16:18:43 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORK_H
-# define FORK_H
+#ifndef CONTEXT_H
+# define CONTEXT_H
 # include "struct.h"
 
-t_fork	*fork_create(int index);
-t_fork	*fork_list_create(int number);
-t_fork	*fork_destroy(t_fork **fork);
-t_fork	*fork_list_destroy(t_fork **fork);
-
-t_fork_pair	fork_pair_gen(t_fork *head, size_t index);
+t_context	*context_init(int argc, char **argv);
+void	*context_destroy(t_context **context_ptr);
+t_philo	*philo_array_populate(t_context	*context);
 #endif
 

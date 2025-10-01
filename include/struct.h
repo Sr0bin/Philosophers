@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 15:55:59 by rorollin          #+#    #+#             */
-/*   Updated: 2025/09/30 18:01:48 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/01 16:38:20 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,13 @@
 #include <bits/types/struct_timeval.h>
 # include <pthread.h>
 # include <stdbool.h>
+# include <sys/time.h>
+
+# define START_OFFSET 500000
 
 typedef struct timeval t_timeval;
 typedef struct s_fork t_fork;
+typedef struct s_philo	t_philo;
 
 
 typedef struct s_int_mutex
@@ -45,25 +49,57 @@ typedef struct	s_fork_pair
 	t_fork	*right;
 }	t_fork_pair;
 
+typedef enum e_sim_state
+{
+	PENDING,
+	STARTED,
+	FINISHED
+}	t_sim_state;
+
+typedef struct	s_time_const
+{
+	size_t		time_to_eat;
+	size_t		time_to_die;
+	size_t		time_to_sleep;
+	t_timeval	sim_start;
+}	t_time_const;
+
+typedef struct s_input
+{
+	size_t		philo_max;
+	size_t		time_to_eat;
+	size_t		time_to_die;
+	size_t		time_to_sleep;
+	int			max_meal;
+}	t_input;
+typedef struct	s_param
+{
+	size_t				philo_max;
+	t_time_const	time_const;
+	int				max_meal;
+}	t_param;
 typedef	struct	s_context
 {
-	t_timeval	time_start;
-	int			philo_max;
+	t_param			param;
+	t_sim_state		state;
+	t_fork			*fork_head;
+	t_philo			*philos;
 }	t_context;
 
 typedef	enum e_philo_state
 {
-	HUNGRY,
 	EATING,
 	THINKING,
+	SLEEPING,
 	DEAD
 }	t_philo_state;
 
 typedef struct s_philo
 {
-	int				index;
+	size_t			index;
+	pthread_t		thread_id;
 	t_philo_state	state;
-	t_timeval		time_latest;
 	t_fork_pair		pair;
+	int				meal;
 }	t_philo;
 #endif

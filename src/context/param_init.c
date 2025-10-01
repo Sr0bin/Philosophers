@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fork.h                                             :+:      :+:    :+:   */
+/*   param_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/30 17:54:41 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/01 16:18:16 by rorollin         ###   ########.fr       */
+/*   Created: 2025/10/01 14:58:20 by rorollin          #+#    #+#             */
+/*   Updated: 2025/10/01 16:01:50 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORK_H
-# define FORK_H
-# include "struct.h"
+#include "philo.h"
 
-t_fork	*fork_create(int index);
-t_fork	*fork_list_create(int number);
-t_fork	*fork_destroy(t_fork **fork);
-t_fork	*fork_list_destroy(t_fork **fork);
+t_param	param_init(t_input input)
+{
+	t_param	param;
 
-t_fork_pair	fork_pair_gen(t_fork *head, size_t index);
-#endif
-
+	param.time_const = time_init(input);
+	param.philo_max = input.philo_max;
+	param.max_meal = input.max_meal;
+	return (param);
+}

@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   thread_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/29 14:14:38 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/01 16:40:09 by rorollin         ###   ########.fr       */
+/*   Created: 2025/10/01 14:44:18 by rorollin          #+#    #+#             */
+/*   Updated: 2025/10/01 16:39:23 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "debug.h"
 #include "philo.h"
 
-int	main(int argc, char **argv)
+void	*start_routine(void	*philo_struct)
 {
-	t_context	*context;
-	t_fork	*fork;
-	t_fork_pair	pair;
+	t_philo	philo_crnt;
 
-	context = context_init(argc, argv);
-	print_context(context);
-	thread_creation_loop(context);
-	
-	context_destroy(&context);
-	// fork = fork_list_create(15);
-	// print_forks(fork);
-	// pair = fork_pair_gen(fork, 7);
-	// print_fork_pair(&pair);
-	// fork_list_destroy(&fork);
-	return (EXIT_SUCCESS);
+	philo_crnt = *(t_philo *) philo_struct;
+	print_philo(&philo_crnt);
+	return (NULL);
+}
+
+int	thread_creation_loop(t_context *context)
+{
+	size_t	i;
+	t_philo	*philo_crnt;
+
+	i = 0;
+	philo_crnt = context->philos;
+	while (i < context->param.philo_max)
+	{
+		pthread_create(&philo_crnt->thread_id, NULL, &start_routine, philo_crnt);
+		philo_crnt++;
+		i++;
+	}
+	return (0);
 }
