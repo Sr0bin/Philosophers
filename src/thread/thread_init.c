@@ -6,14 +6,27 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 14:44:18 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/01 19:39:18 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/01 19:58:22 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "mutex.h"
 #include "philo.h"
 #include "timer.h"
 #include <pthread.h>
 
+void	philo_loop(t_philo	*philo)
+{
+	mutex_bool_access(&philo->context->running, &philo->ret);
+	while (philo->context->running.val == true)
+	{
+		philo->context->running.val = false;
+		mutex_bool_unlock(&philo->context->running);
+		mutex_bool_access(&philo->context->running, &philo->ret);
+	}
+	mutex_bool_unlock(&philo->context->running);
+
+}
 void	*start_routine(void	*philo_struct)
 {
 	t_philo	philo_crnt;
@@ -28,6 +41,7 @@ void	*start_routine(void	*philo_struct)
 		granular_usleep(10000, &philo_crnt);
 		gettimeofday(&crnt_time, NULL);
 	}
+	philo_loop(&philo_crnt);
 	print_philo(&philo_crnt);
 	return (NULL);
 }

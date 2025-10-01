@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 15:55:59 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/01 19:49:03 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/01 19:53:12 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ typedef	struct	s_context
 	t_fork			*fork_head;
 	t_philo			*philos;
 	t_mutex_bool	write_mutex;	
+	t_mutex_bool	running;
 }	t_context;
 
 typedef	enum e_philo_state

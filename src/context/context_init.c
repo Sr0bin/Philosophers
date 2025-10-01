@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 14:48:04 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/01 17:35:56 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/01 19:58:06 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,7 @@ t_context	*context_init(int argc, char **argv)
 	philo_array_populate(context);
 	context->state = PENDING;
 	context->write_mutex = mutex_bool_create(0, &ret);
+	context->running = mutex_bool_create(0, &ret);
+	context->running.val = 1;
 	return (context);
 }
