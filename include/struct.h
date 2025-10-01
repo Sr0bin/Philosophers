@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 15:55:59 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/01 19:53:12 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/01 20:10:59 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,9 @@
 # define USEC_PER_SEC 1000000
 # define SLEEP_DELTA 100
 
-typedef struct timeval t_timeval;
-typedef struct s_fork t_fork;
+typedef struct timeval	t_timeval;
+typedef struct s_fork	t_fork;
 typedef struct s_philo	t_philo;
-
 
 typedef struct s_int_mutex
 {
@@ -38,14 +37,14 @@ typedef struct s_mutex_bool
 	bool			val;
 }	t_mutex_bool;
 
-typedef	struct	s_fork
+typedef struct s_fork
 {
-	int	index;
+	int				index;
 	t_mutex_bool	state;
-	t_fork *next;
+	t_fork			*next;
 }	t_fork;
 
-typedef struct	s_fork_pair
+typedef struct s_fork_pair
 {
 	t_fork	*left;
 	t_fork	*right;
@@ -100,14 +99,14 @@ typedef	enum e_philo_state
 
 typedef struct s_timer
 {
-	t_timeval	start_time;
-	t_timeval	crnt_time;
+	t_timeval	w_start_time;
+	t_timeval	w_crnt_time;
 }	t_timer;
 
 typedef struct s_philo
 {
 	size_t			index;
-	pthread_t		thread_id;
+	pthread_t		th_id;
 	t_philo_state	state;
 	t_fork_pair		pair;
 	int				meal;

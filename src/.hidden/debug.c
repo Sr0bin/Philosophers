@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 20:33:00 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/01 17:35:56 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/01 20:00:38 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,7 +181,7 @@ void	print_philo(t_philo *philo)
 	}
 	printf("Philo: {\n");
 	printf("  index:     %d\n", philo->index);
-	printf("  thread_id: %lu\n", (unsigned long)philo->thread_id);
+	printf("  thread_id: %lu\n", (unsigned long)philo->th_id);
 	printf("  state:     %s\n", philo_state_to_string(philo->state));
 	printf("  meal:      %d\n", philo->meal);
 	printf("  forks:     left=%d, right=%d\n",
