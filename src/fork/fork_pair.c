@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 20:48:07 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/02 21:53:56 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/02 22:59:19 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,9 @@ bool	fork_pair_pickup(t_fork_pair *pair, t_philo *philo)
 		return (false);
 	}
 	mutex_bool_access(&pair->right->state, &philo->ret);
-	while (pair->right->state.val == true && philo->ret == 0
+	while (!philo_check_death(philo)
+		&& pair->right->state.val == true
+		&& philo->ret == 0
 		&& check_run(philo))
 	{
 		mutex_bool_unlock(&pair->right->state);

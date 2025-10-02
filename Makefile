@@ -6,7 +6,7 @@
 #    By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/29 14:14:19 by rorollin          #+#    #+#              #
-#    Updated: 2025/10/02 15:51:38 by rorollin         ###   ########.fr        #
+#    Updated: 2025/10/02 23:44:43 by rorollin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ SOURCES_PHILO = philo_init.c philo_state.c
 
 #---------------------------
 
-SOURCES_TIME = time_init.c granular_sleep.c
+SOURCES_TIME = time_init.c granular_sleep.c time_check.c
 
 #---------------------------
 
@@ -41,7 +41,7 @@ SOURCES_FORK = fork_init.c fork_pair.c
 
 #---------------------------
 
-SOURCES_THREAD = thread_init.c sim.c
+SOURCES_THREAD = thread_init.c sim.c thread_core.c
 
 #---------------------------
 

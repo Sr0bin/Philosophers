@@ -6,48 +6,24 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:42:26 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/02 20:08:32 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/02 23:46:26 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-bool	philo_check_death(t_philo *philo)
-{
-	gettimeofday(&philo->timer.s_crnt_time, NULL);
-	if (time_difference(philo->timer.last_meal, philo->timer.s_crnt_time)
-	>= philo->context->param.time_const.time_to_die * USEC_PER_MSEC)
-	{
-		sim_end(philo);
-		return (true);
-	}
-	return (false);
-}
-
-bool	philo_check_ate(t_philo *philo)
-{
-	gettimeofday(&philo->timer.s_crnt_time, NULL);
-	if (time_difference(philo->timer.s_start_time, philo->timer.s_crnt_time)
-	>= philo->context->param.time_const.time_to_eat * USEC_PER_MSEC)
-		return (true);
-	return (false);
-}
-
-bool	philo_check_sleep(t_philo *philo)
-{
-	gettimeofday(&philo->timer.s_crnt_time, NULL);
-	if (time_difference(philo->timer.s_start_time, philo->timer.s_crnt_time)
-	>= philo->context->param.time_const.time_to_sleep * USEC_PER_MSEC)
-		return (true);
-	return (false);
-}
+// t_philo	*philo_thinking(t_philo *philo)
+// {
+//
+// }
 
 t_philo	*philo_change_state(t_philo	*philo)
 {
 	if (philo->state == EATING)
 	{
-		philo_check_death(philo);
-		if (philo_check_ate(philo) && check_run(philo))
+		if (!philo_check_death(philo)
+			&& check_run(philo)
+			&& philo_check_ate(philo))
 		{
 			fork_pair_rest(&philo->pair, philo);
 			philo_print_msg(philo, "is sleeping");
@@ -58,17 +34,18 @@ t_philo	*philo_change_state(t_philo	*philo)
 	}
 	else if (philo->state == SLEEPING)
 	{
-		philo_check_death(philo);
-		if (philo_check_sleep(philo) && check_run(philo))
+		if (!philo_check_death(philo) 
+			&& check_run(philo)
+			&& philo_check_sleep(philo))
 		{
-			philo->state = THINKING;
 			philo_print_msg(philo, "is thinking");
 			gettimeofday(&philo->timer.s_start_time, NULL);
+			philo->state = THINKING;
 		}
 	}
 	else if (philo->state == THINKING)
 	{
-		while (!philo_check_death(philo)) 
+		while (!philo_check_death(philo) && check_run(philo)) 
 		{
 			usleep(1000);
 			if (fork_pair_pickup(&philo->pair, philo) == true)
@@ -76,8 +53,8 @@ t_philo	*philo_change_state(t_philo	*philo)
 		}
 		if (philo_check_death(philo))
 			return (philo);
-		philo->state = EATING;
 		philo_print_msg(philo, "is eating");
+		philo->state = EATING;
 		gettimeofday(&philo->timer.last_meal, NULL);
 		gettimeofday(&philo->timer.s_start_time, NULL);
 	}

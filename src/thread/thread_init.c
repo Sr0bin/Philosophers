@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 14:44:18 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/02 20:52:28 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/02 23:44:43 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,14 @@ void	philo_loop(t_philo	*philo)
 {
 	philo_print_msg(philo, "is thinking");
 	if (philo->index % 2)
-		usleep((philo->context->param.time_const.time_to_eat / 2) * USEC_PER_MSEC);
-	while (check_run(philo) == true)
+		granular_usleep((philo->context->param.time_const.time_to_eat / 2) * USEC_PER_MSEC, philo);
+	while (!philo_check_death(philo) && check_run(philo) == true)
 	{
 		philo_change_state(philo);
 		usleep(1000);
 	}
 }
+
 void	*start_routine(void	*philo_struct)
 {
 	t_philo		philo_crnt;
@@ -48,41 +49,10 @@ void	*start_routine(void	*philo_struct)
 	gettimeofday(&crnt_time, NULL);
 	while (!time_threshold(start_time, crnt_time))
 	{
-		granular_usleep(1000, &philo_crnt);
+		usleep(1000);
 		gettimeofday(&crnt_time, NULL);
 	}
 	philo_loop(&philo_crnt);
 	// print_philo(&philo_crnt);
 	return (NULL);
-}
-
-void	*thread_destroy_philo(t_context *context)
-{
-	size_t		i;
-	t_philo		*philo_crnt;
-
-	i = 0;
-	philo_crnt = context->philos;
-	while (i < context->param.philo_max)
-	{
-		pthread_join(philo_crnt->th_id, NULL);
-		philo_crnt++;
-		i++;
-	}
-	return (NULL);
-}
-int	thread_creation_loop(t_context *context)
-{
-	size_t	i;
-	t_philo	*philo_crnt;
-
-	i = 0;
-	philo_crnt = context->philos;
-	while (i < context->param.philo_max)
-	{
-		pthread_create(&philo_crnt->th_id, NULL, &start_routine, philo_crnt);
-		philo_crnt++;
-		i++;
-	}
-	return (0);
 }
