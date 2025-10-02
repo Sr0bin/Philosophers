@@ -6,10 +6,11 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 14:48:04 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/02 20:18:23 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/02 22:39:50 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "debug.h"
 #include "philo.h"
 #include <pthread.h>
 
@@ -53,9 +54,9 @@ t_context	*context_init(int argc, char **argv)
 	offset_time(&context->sim_time.sim_start, START_OFFSET);
 	philo_array_populate(context);
 	context->state = PENDING;
-	context->write_mutex = mutex_bool_create(0, &ret);
-	context->running = mutex_bool_create(0, &ret);
-	context->philo_meal_max = mutex_int_create(param.max_meal, &ret);
+	mutex_bool_create(0, &context->write_mutex.mutex, &ret);
+	mutex_bool_create(0, &context->running.mutex, &ret);
+	mutex_int_create(param.max_meal,&context->philo_meal_max, &ret);
 	context->running.val = true;
 	return (context);
 }

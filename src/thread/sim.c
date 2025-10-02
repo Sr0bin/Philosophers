@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:42:51 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/02 20:53:13 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/02 22:36:41 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	check_run(t_philo *philo)
 
 void	add_meal(t_philo *philo)
 {
-	if ((++philo->meal) >= philo->context->param.max_meal)
+	if ((++philo->meal) == philo->context->param.max_meal)
 	{
 		mutex_int_access(&philo->context->philo_meal_max, &philo->ret);
 		philo->context->philo_meal_max.val++;
