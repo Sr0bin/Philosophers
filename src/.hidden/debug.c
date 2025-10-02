@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 20:33:00 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/01 20:00:38 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/02 15:30:05 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,9 +116,9 @@ void	print_time_const(t_time_const *tc)
 	printf("  time_to_eat:   %zu ms\n", tc->time_to_eat);
 	printf("  time_to_die:   %zu ms\n", tc->time_to_die);
 	printf("  time_to_sleep: %zu ms\n", tc->time_to_sleep);
-	printf("  sim_start:     %ld.%06ld\n",
-		tc->sim_start.tv_sec,
-		tc->sim_start.tv_usec);
+	// printf("  sim_start:     %ld.%06ld\n",
+	// 	tc->sim_start.tv_sec,
+	// 	tc->sim_start.tv_usec);
 	printf("}\n");
 }
 

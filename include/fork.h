@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 17:54:41 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/01 17:25:49 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/02 16:18:33 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,7 @@ t_fork	*fork_destroy(t_fork **fork);
 t_fork	*fork_list_destroy(t_fork **fork);
 
 t_fork_pair	fork_pair_gen(t_fork *head, size_t index);
+bool	fork_pair_pickup(t_fork_pair *pair, t_philo *philo);
+int	fork_pair_rest(t_fork_pair *pair, t_philo *philo);
 #endif
 

@@ -6,28 +6,76 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 20:48:07 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/01 19:50:45 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/02 19:56:33 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	fork_pair_unlock(t_fork_pair *pair, t_philo *philo)
-{
-	mutex_bool_access(&pair->right->state, &philo->ret);
-	pair->right->state.val = 0;
-	mutex_bool_access(&pair->left->state, &philo->ret);
-	pair->left->state.val = 0;
-}
-
-void	fork_pair_lock(t_fork_pair *pair, t_philo *philo)
+int	fork_pair_rest(t_fork_pair *pair, t_philo *philo)
 {
 	mutex_bool_access(&pair->left->state, &philo->ret);
-	pair->left->state.val = 1;
+	if (pair->left->state.val == true)
+		pair->left->state.val = false;
+	mutex_bool_unlock(&pair->left->state);
 	mutex_bool_access(&pair->right->state, &philo->ret);
-	pair->right->state.val = 1;
+	if (pair->right->state.val == true)
+		pair->right->state.val = false;
+	mutex_bool_unlock(&pair->right->state);
+	return (0);
 }
 
+bool	fork_pair_pickup(t_fork_pair *pair, t_philo *philo)
+{
+	mutex_bool_access(&pair->left->state, &philo->ret);
+	if (pair->left->state.val == false && philo->ret == 0)
+	{
+		pair->left->state.val = true;
+		mutex_bool_unlock(&pair->left->state);
+	}
+	else
+	{
+		mutex_bool_unlock(&pair->left->state);
+		// philo_print_msg(philo, "can't take left fork");
+		return (false);
+	}
+	mutex_bool_access(&pair->right->state, &philo->ret);
+	while (pair->right->state.val == true && philo->ret == 0
+		&& check_run(philo))
+	{
+		mutex_bool_unlock(&pair->right->state);
+		usleep(1000);
+		mutex_bool_access(&pair->right->state, &philo->ret);
+	}
+	pair->right->state.val = true;
+	mutex_bool_unlock(&pair->right->state);
+	philo_print_msg(philo, "has taken a fork");
+	return (true);
+}
+
+// bool	fork_pair_pickup(t_fork_pair *pair, t_philo *philo)
+// {
+// 	mutex_bool_access(&pair->left->state, &philo->ret);
+// 	if (pair->left->state.val == false && philo->ret == 0)
+// 		pair->left->state.val = true;
+// 	else
+// 	{
+// 		mutex_bool_unlock(&pair->left->state);
+// 		return (false);
+// 	}
+// 	mutex_bool_access(&pair->right->state, &philo->ret);
+// 	if (pair->right->state.val == false && philo->ret == 0)
+// 	{
+// 		pair->right->state.val = true;
+// 		mutex_bool_unlock(&pair->right->state);
+// 		philo_print_msg(philo, "has taken a fork");
+// 		return (true);
+// 	}
+// 	mutex_bool_unlock(&pair->right->state);
+// 	pair->left->state.val = false;
+// 	mutex_bool_unlock(&pair->left->state);
+// 	return (false);
+// }
 t_fork_pair	fork_pair_gen(t_fork *head, size_t index)
 {
 	t_fork_pair	ret;
@@ -51,3 +99,18 @@ t_fork_pair	fork_pair_gen(t_fork *head, size_t index)
 	}
 	return (ret);
 }
+// t_fork_pair	fork_pair_gen(t_fork *head, size_t index)
+// {
+// 	t_fork_pair	ret;
+// 	size_t		i;
+//
+// 	i = 0;
+// 	while (i < index)
+// 	{
+// 		head = head->next;
+// 		i++;
+// 	}
+// 		ret.left = head;
+// 		ret.right = head->next;
+// 	return (ret);
+// }

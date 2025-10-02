@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:54:37 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/01 17:35:56 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/02 13:53:47 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ t_fork	*fork_destroy(t_fork **fork)
 	t_mutex_bool	*ret;
 
 	ret = mutex_bool_destroy(&(*fork)->state);
-	if (ret == &(*fork)->state)
+	if (ret != &(*fork)->state)
 		return (*fork);
 	(**fork) = (t_fork) {0};
 	free(*fork);

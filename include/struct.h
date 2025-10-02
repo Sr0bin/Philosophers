@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 15:55:59 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/01 20:10:59 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/02 20:01:54 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 # define START_OFFSET 800000
 # define USEC_PER_SEC 1000000
+# define USEC_PER_MSEC 1000
 # define SLEEP_DELTA 100
 
 typedef struct timeval	t_timeval;
@@ -62,8 +63,13 @@ typedef struct	s_time_const
 	size_t		time_to_eat;
 	size_t		time_to_die;
 	size_t		time_to_sleep;
-	t_timeval	sim_start;
 }	t_time_const;
+
+typedef struct s_sim_time
+{
+	t_timeval	sim_start;
+	t_timeval	sim_crnt;
+}	t_sim_time;
 
 typedef struct s_input
 {
@@ -75,7 +81,7 @@ typedef struct s_input
 }	t_input;
 typedef struct	s_param
 {
-	size_t				philo_max;
+	size_t			philo_max;
 	t_time_const	time_const;
 	int				max_meal;
 }	t_param;
@@ -87,6 +93,8 @@ typedef	struct	s_context
 	t_philo			*philos;
 	t_mutex_bool	write_mutex;	
 	t_mutex_bool	running;
+	t_mutex_int		philo_meal_max;
+	t_sim_time		sim_time;
 }	t_context;
 
 typedef	enum e_philo_state
@@ -99,6 +107,9 @@ typedef	enum e_philo_state
 
 typedef struct s_timer
 {
+	t_timeval	last_meal;
+	t_timeval	s_start_time;
+	t_timeval	s_crnt_time;
 	t_timeval	w_start_time;
 	t_timeval	w_crnt_time;
 }	t_timer;

@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 20:45:54 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/01 16:56:36 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/02 20:36:49 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@ t_philo	philo_struct_create(size_t index, t_context *context)
 	t_philo	philo;
 
 	philo = (t_philo) {0};
-	philo.index = index;
+	philo.index = index + 1;
 	philo.state = THINKING;
 	philo.pair = fork_pair_gen(context->fork_head, index);
 	philo.context = context;
+	philo.timer.s_start_time = context->sim_time.sim_start;
+	philo.timer.last_meal = context->sim_time.sim_start;
 	return (philo);
 }
 

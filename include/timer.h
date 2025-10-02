@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 19:17:35 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/01 19:39:08 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/02 15:28:34 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 void	granular_usleep(long usec, t_philo *philo);
 t_time_const	time_init(t_input input);
 int		time_threshold(t_timeval time_to_pass, t_timeval time_to_check);
+long	sim_time(t_context	*context);
+void	offset_time(t_timeval *input, long offset);
 long	time_difference(t_timeval a, t_timeval b);
 #endif
 
