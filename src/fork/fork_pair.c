@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 20:48:07 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/02 19:56:33 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/02 21:53:56 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ bool	fork_pair_pickup(t_fork_pair *pair, t_philo *philo)
 	{
 		pair->left->state.val = true;
 		mutex_bool_unlock(&pair->left->state);
+		philo_print_msg(philo, "has taken a fork");
 	}
 	else
 	{
@@ -99,18 +100,3 @@ t_fork_pair	fork_pair_gen(t_fork *head, size_t index)
 	}
 	return (ret);
 }
-// t_fork_pair	fork_pair_gen(t_fork *head, size_t index)
-// {
-// 	t_fork_pair	ret;
-// 	size_t		i;
-//
-// 	i = 0;
-// 	while (i < index)
-// 	{
-// 		head = head->next;
-// 		i++;
-// 	}
-// 		ret.left = head;
-// 		ret.right = head->next;
-// 	return (ret);
-// }

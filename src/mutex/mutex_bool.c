@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:51:11 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/02 17:40:29 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/02 21:59:32 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	*mutex_bool_destroy(t_mutex_bool *mutex)
 {
 	int	ret;
 
-	ret = pthread_mutex_destroy(&mutex->mutex);
+	ret = pthread_mutex_destroy(&(mutex->mutex));
 	if (ret != 0)
 		return (NULL);
 	return (mutex);
@@ -41,6 +41,7 @@ t_mutex_bool	mutex_bool_create(bool val, int *error)
 	pthread_mutex_t	pmutex;
 	int	ret;
 
+	pmutex = (pthread_mutex_t) {0};
 	ret = pthread_mutex_init(&pmutex, NULL);
 	*error = ret;
 	mutex.mutex = pmutex;
