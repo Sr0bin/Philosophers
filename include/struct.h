@@ -6,13 +6,13 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 15:55:59 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/02 20:01:54 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/02 23:52:51 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
-#include <bits/types/struct_timeval.h>
+# include <bits/types/struct_timeval.h>
 # include <pthread.h>
 # include <stdbool.h>
 # include <sys/time.h>

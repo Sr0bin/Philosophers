@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 23:43:14 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/02 23:43:24 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/03 01:44:44 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ bool	philo_check_death(t_philo *philo)
 {
 	gettimeofday(&philo->timer.s_crnt_time, NULL);
 	if (time_difference(philo->timer.last_meal, philo->timer.s_crnt_time)
-	>= philo->context->param.time_const.time_to_die * USEC_PER_MSEC)
+		>= philo->context->param.time_const.time_to_die * USEC_PER_MSEC)
 	{
 		sim_end(philo);
 		return (true);

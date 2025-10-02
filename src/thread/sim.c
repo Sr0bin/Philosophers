@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:42:51 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/02 22:36:41 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/02 23:52:24 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int	check_run(t_philo *philo)
 	return (false);
 }
 
-
 void	add_meal(t_philo *philo)
 {
 	if ((++philo->meal) == philo->context->param.max_meal)
@@ -42,7 +41,7 @@ void	add_meal(t_philo *philo)
 	}
 }
 
-void	philo_print_death(t_philo	*philo, const char* msg)
+void	philo_print_death(t_philo	*philo, const char *msg)
 {
 	mutex_bool_access(&philo->context->running, &philo->ret);
 	mutex_bool_access(&philo->context->write_mutex, &philo->ret);
@@ -60,4 +59,3 @@ void	sim_end(t_philo	*philo)
 	philo->state = DEAD;
 	philo_print_death(philo, "died");
 }
-
