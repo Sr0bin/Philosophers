@@ -6,7 +6,7 @@
 #    By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/29 14:14:19 by rorollin          #+#    #+#              #
-#    Updated: 2025/10/03 04:45:53 by rorollin         ###   ########.fr        #
+#    Updated: 2025/10/03 07:09:18 by rorollin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SOURCES_CONTEXT = context_init.c ft_atoi.c param_init.c parsing.c
 
 #---------------------------
 
-SOURCES_PHILO = philo_init.c philo_state.c
+SOURCES_PHILO = philo_init.c philo_state.c philo_print.c
 
 #---------------------------
 
@@ -41,7 +41,7 @@ SOURCES_FORK = fork_init.c fork_pair.c
 
 #---------------------------
 
-SOURCES_THREAD = thread_init.c sim.c thread_core.c
+SOURCES_THREAD = thread_init.c sim_state.c thread_core.c
 
 #---------------------------
 

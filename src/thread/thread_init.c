@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 14:44:18 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/03 05:00:36 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/03 07:08:11 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,20 @@
 #include "timer.h"
 #include <pthread.h>
 
-void	philo_print_msg(t_philo	*philo, const char* msg)
-{
-	mutex_bool_access(&philo->context->running, &philo->ret);
-	mutex_bool_access(&philo->context->write_mutex, &philo->ret);
-	if (philo->context->running.val == true)
-		printf("%ld %zu %s\n", sim_time(philo->context), philo->index, msg);
-	mutex_bool_unlock(&philo->context->running);
-	mutex_bool_unlock(&philo->context->write_mutex);
-
-}
-
 void	philo_loop(t_philo	*philo)
 {
 	philo_print_msg(philo, "is thinking");
 	if (philo->index % 2)
-		granular_usleep((philo->context->param.time_const.time_to_eat / 2) * USEC_PER_MSEC, philo); //bitshift de 1
+		granular_usleep((philo->context->param.time_const.time_to_eat / 2)
+			* USEC_PER_MSEC, philo);
 	while (!philo_check_death(philo) && check_run(philo) == true)
 	{
-		philo_change_state(philo);
+		if (philo->state == EATING)
+			philo_eating(philo);
+		else if (philo->state == SLEEPING)
+			philo_sleeping(philo);
+		else if (philo->state == THINKING)
+			philo_thinking(philo);
 		usleep(500);
 	}
 }
@@ -46,7 +41,7 @@ void	*start_routine(void	*philo_struct)
 	t_timeval	crnt_time;
 
 	philo_crnt = *(t_philo *) philo_struct;
-	start_time = philo_crnt.context->sim_time.sim_start;
+	start_time = philo_crnt.context->sim_t.sim_start;
 	gettimeofday(&crnt_time, NULL);
 	while (!time_threshold(start_time, crnt_time))
 	{

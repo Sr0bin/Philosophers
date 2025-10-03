@@ -6,14 +6,14 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:01:35 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/02 15:25:39 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/03 07:03:29 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 #include <sys/time.h>
 
-int		time_threshold(t_timeval time_to_pass, t_timeval time_to_check)
+int	time_threshold(t_timeval time_to_pass, t_timeval time_to_check)
 {
 	if (time_to_pass.tv_sec == time_to_check.tv_sec)
 	{
@@ -23,7 +23,7 @@ int		time_threshold(t_timeval time_to_pass, t_timeval time_to_check)
 	}
 	if (time_to_pass.tv_sec < time_to_check.tv_sec)
 	{
-			return (1);
+		return (1);
 	}
 	return (0);
 }
@@ -35,9 +35,9 @@ long	time_difference(t_timeval a, t_timeval b)
 
 long	sim_time(t_context	*context)
 {
-	gettimeofday(&context->sim_time.sim_crnt, NULL);
-	return (time_difference(context->sim_time.sim_start, context->sim_time.sim_crnt)
-	/ USEC_PER_MSEC);
+	gettimeofday(&context->sim_t.sim_crnt, NULL);
+	return (time_difference(context->sim_t.sim_start, context->sim_t.sim_crnt)
+		/ USEC_PER_MSEC);
 }
 
 // Offset a t_timeval of the specified microseconds.
@@ -54,8 +54,7 @@ void	offset_time(t_timeval *input, long offset)
 
 t_time_const	time_init(t_input input)
 {
-	t_timeval	crnt_time;
-	t_time_const timers;
+	t_time_const	timers;
 
 	timers.time_to_eat = input.time_to_eat;
 	timers.time_to_die = input.time_to_die;

@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 15:18:03 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/03 03:39:58 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/03 06:50:44 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,8 @@ static long long	ft_add_dec(const char *str)
 size_t	ft_atoi(const char *nptr)
 {
 	size_t	i;
-	int		sign;
 
 	i = 0;
-	sign = 1;
 	while (ft_charstatus(nptr[i]))
 	{
 		while (ft_charstatus(nptr[i]) > 1)
@@ -71,7 +69,7 @@ size_t	ft_atoi(const char *nptr)
 					return (LONG_MAX);
 				i++;
 			}
-			return (sign * (int) ft_add_dec(&nptr[i]));
+			return (ft_add_dec(&nptr[i]));
 		}
 		i++;
 	}

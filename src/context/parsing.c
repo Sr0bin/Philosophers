@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 15:12:44 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/03 03:47:19 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/03 06:55:03 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 bool	input_check(t_input	input)
 {
 	if (input.philo_max == LONG_MAX
-		|| input.time_to_die  == LONG_MAX
-		|| input.time_to_eat  == LONG_MAX
+		|| input.time_to_die == LONG_MAX
+		|| input.time_to_eat == LONG_MAX
 		|| input.time_to_sleep == LONG_MAX
 		|| input.max_meal == LONG_MAX)
 		return (false);
@@ -28,7 +28,6 @@ t_input	input_init(int argc, char **argv)
 {
 	t_input	input;
 
-	//add check for error
 	if (argc < 5 || argc > 7)
 		exit(EXIT_FAILURE);
 	input.philo_max = ft_atoi(argv[1]);
@@ -44,9 +43,9 @@ t_input	input_init(int argc, char **argv)
 
 t_param	parsing(int argc, char **argv, int *ret)
 {
-	int	i;
+	int		i;
 	t_input	input;
-	t_param param;
+	t_param	param;
 
 	input = input_init(argc, argv);
 	if (!input_check(input))

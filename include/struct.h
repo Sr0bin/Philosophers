@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 15:55:59 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/03 02:54:50 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/03 07:03:12 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ typedef enum e_sim_state
 	FINISHED
 }	t_sim_state;
 
-typedef struct	s_time_const
+typedef struct s_time_const
 {
 	size_t		time_to_eat;
 	size_t		time_to_die;
@@ -73,31 +73,30 @@ typedef struct s_sim_time
 
 typedef struct s_input
 {
-	size_t		philo_max;
-	size_t		time_to_eat;
-	size_t		time_to_die;
-	size_t		time_to_sleep;
-	int			max_meal;
+	size_t			philo_max;
+	size_t			time_to_eat;
+	size_t			time_to_die;
+	size_t			time_to_sleep;
+	size_t			max_meal;
 }	t_input;
-typedef struct	s_param
+typedef struct s_param
 {
 	size_t			philo_max;
 	t_time_const	time_const;
 	int				max_meal;
 }	t_param;
-typedef	struct	s_context
+typedef struct s_context
 {
 	t_param			param;
-	t_sim_state		state;
 	t_fork			*fork_head;
 	t_philo			*philos;
 	t_mutex_bool	write_mutex;	
 	t_mutex_bool	running;
 	t_mutex_int		philo_meal_max;
-	t_sim_time		sim_time;
+	t_sim_time		sim_t;
 }	t_context;
 
-typedef	enum e_philo_state
+typedef enum e_philo_state
 {
 	EATING,
 	THINKING,
@@ -121,9 +120,8 @@ typedef struct s_philo
 	t_philo_state	state;
 	t_fork_pair		pair;
 	int				meal;
-	t_context	*context;
-	t_timer		timer;
-	int	ret;
-
+	t_context		*context;
+	t_timer			timer;
+	int				ret;
 }	t_philo;
 #endif

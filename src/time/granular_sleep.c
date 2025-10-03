@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 17:23:01 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/02 23:03:46 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/03 07:01:09 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ void	granular_usleep(long usec, t_philo *philo)
 	while (!philo_check_death(philo) && check_run(philo))
 	{
 		gettimeofday(&philo->timer.w_crnt_time, NULL);
-		if (time_difference(philo->timer.w_start_time, philo->timer.w_crnt_time) > usec)
-			break;
+		if (time_difference(philo->timer.w_start_time, philo->timer.w_crnt_time)
+			> usec)
+			break ;
 		usleep(SLEEP_DELTA);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 20:33:00 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/02 15:30:05 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/03 06:38:22 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,8 +226,6 @@ void	print_context(t_context *ctx)
 		return;
 	}
 	printf("====== CONTEXT ======\n");
-	printf("Simulation State: %s\n", sim_state_to_string(ctx->state));
-	printf("\n");
 	print_param(&ctx->param);
 	printf("\n");
 	print_all_forks(ctx->fork_head);
