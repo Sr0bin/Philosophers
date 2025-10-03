@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:54:37 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/03 06:22:15 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/03 07:13:55 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ t_fork	*fork_create(int index)
 {
 	int				error;
 	t_fork			*fork;
-	t_mutex_bool	state;
 
 	fork = malloc(sizeof(t_fork));
 	if (fork == NULL)
@@ -48,7 +47,7 @@ t_fork	*fork_list_create(size_t number)
 	fork_crnt = fork_head;
 	while (i < number)
 	{
-		fork_next = fork_create(i);
+		fork_next = fork_create((int) i);
 		if (fork_next == NULL)
 			return (fork_list_destroy(&fork_head));
 		fork_crnt->next = fork_next;

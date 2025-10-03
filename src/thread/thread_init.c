@@ -6,14 +6,11 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 14:44:18 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/03 07:08:11 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/03 07:19:23 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mutex.h"
 #include "philo.h"
-#include "struct.h"
-#include "timer.h"
 #include <pthread.h>
 
 void	philo_loop(t_philo	*philo)

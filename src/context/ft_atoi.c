@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 15:18:03 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/03 06:50:44 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/03 07:17:31 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ size_t	ft_atoi(const char *nptr)
 					return (LONG_MAX);
 				i++;
 			}
-			return (ft_add_dec(&nptr[i]));
+			return ((size_t) ft_add_dec(&nptr[i]));
 		}
 		i++;
 	}

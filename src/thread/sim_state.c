@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:42:51 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/03 07:08:11 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/03 07:19:44 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	check_run(t_philo *philo)
 	{
 		mutex_bool_unlock(&philo->context->running);
 		if (mutex_int_access(&philo->context->philo_meal_max, &philo->ret)
-			== philo->context->param.philo_max)
+			== (int) philo->context->param.philo_max)
 		{
 			mutex_int_unlock(&philo->context->philo_meal_max);
 			return (false);

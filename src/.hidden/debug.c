@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 20:33:00 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/03 06:38:22 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/03 07:20:53 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ void	print_input(t_input *input)
 	printf("  time_to_eat:   %zu ms\n", input->time_to_eat);
 	printf("  time_to_die:   %zu ms\n", input->time_to_die);
 	printf("  time_to_sleep: %zu ms\n", input->time_to_sleep);
-	printf("  max_meal:      %d\n", input->max_meal);
+	printf("  max_meal:      %ld\n", input->max_meal);
 	printf("}\n");
 }
 
@@ -180,7 +180,7 @@ void	print_philo(t_philo *philo)
 		return;
 	}
 	printf("Philo: {\n");
-	printf("  index:     %d\n", philo->index);
+	printf("  index:     %zu\n", philo->index);
 	printf("  thread_id: %lu\n", (unsigned long)philo->th_id);
 	printf("  state:     %s\n", philo_state_to_string(philo->state));
 	printf("  meal:      %d\n", philo->meal);
@@ -205,7 +205,7 @@ void	print_all_philos(t_philo *philos, size_t count)
 	i = 0;
 	while (i < count)
 	{
-		printf("[%zu] index: %d, state: %s, meals: %d, forks: L%d/R%d\n",
+		printf("[%zu] index: %zu, state: %s, meals: %d, forks: L%d/R%d\n",
 			i,
 			philos[i].index,
 			philo_state_to_string(philos[i].state),

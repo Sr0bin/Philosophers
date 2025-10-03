@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 15:55:59 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/03 07:03:12 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/03 07:18:24 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ typedef struct s_input
 	size_t			time_to_eat;
 	size_t			time_to_die;
 	size_t			time_to_sleep;
-	size_t			max_meal;
+	long			max_meal;
 }	t_input;
 typedef struct s_param
 {

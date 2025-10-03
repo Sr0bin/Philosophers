@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 15:12:44 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/03 06:55:03 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/03 07:18:37 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_input	input_init(int argc, char **argv)
 	input.time_to_eat = ft_atoi(argv[3]);
 	input.time_to_sleep = ft_atoi(argv[4]);
 	if (argc == 6)
-		input.max_meal = ft_atoi(argv[5]);
+		input.max_meal = (long) ft_atoi(argv[5]);
 	else
 		input.max_meal = -1;
 	return (input);
@@ -43,7 +43,6 @@ t_input	input_init(int argc, char **argv)
 
 t_param	parsing(int argc, char **argv, int *ret)
 {
-	int		i;
 	t_input	input;
 	t_param	param;
 

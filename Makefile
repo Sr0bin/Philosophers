@@ -6,7 +6,7 @@
 #    By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/29 14:14:19 by rorollin          #+#    #+#              #
-#    Updated: 2025/10/03 07:09:18 by rorollin         ###   ########.fr        #
+#    Updated: 2025/10/03 07:21:09 by rorollin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,7 +88,6 @@ CFLAGS_DEBUG = -Wall -Wextra -Werror -MMD -MP -ggdb3 -Wshadow -Wconversion -Wsig
 
 CFLAGS_PROD = -Wall -Wextra -MMD -MP -O3 -ggdb
 
-# -flto to check
 
 CFLAGS = $(CFLAGS_PROD)
 
