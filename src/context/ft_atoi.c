@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 15:18:03 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/01 16:02:55 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/03 03:39:58 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ size_t	ft_atoi(const char *nptr)
 			if (ft_charstatus(nptr[i]) == 2)
 			{
 				if (nptr[i] == '-')
-					sign *= -1;
+					return (LONG_MAX);
 				i++;
 			}
 			return (sign * (int) ft_add_dec(&nptr[i]));

@@ -6,7 +6,7 @@
 #    By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/29 14:14:19 by rorollin          #+#    #+#              #
-#    Updated: 2025/10/02 23:44:43 by rorollin         ###   ########.fr        #
+#    Updated: 2025/10/03 04:45:53 by rorollin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,7 +86,9 @@ CFLAGS_DEBUG = -Wall -Wextra -Werror -MMD -MP -ggdb3 -Wshadow -Wconversion -Wsig
 -Wwrite-strings -Wuninitialized -fno-delete-null-pointer-checks -fno-omit-frame-pointer -std=c11 \
 -Iinclude
 
-CFLAGS_PROD = -Wall -Wextra -MMD -MP -ggdb
+CFLAGS_PROD = -Wall -Wextra -MMD -MP -O3 -ggdb
+
+# -flto to check
 
 CFLAGS = $(CFLAGS_PROD)
 

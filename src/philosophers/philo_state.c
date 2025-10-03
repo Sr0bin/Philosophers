@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:42:26 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/03 01:44:44 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/03 03:03:45 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static void	philo_eating(t_philo *philo)
 		gettimeofday(&philo->timer.s_start_time, NULL);
 		philo->state = SLEEPING;
 		add_meal(philo);
+		granular_usleep((philo->context->param.time_const.time_to_sleep / 2) * USEC_PER_MSEC, philo);
 	}
 }
 
@@ -52,6 +53,7 @@ static void	philo_thinking(t_philo *philo)
 	philo->state = EATING;
 	gettimeofday(&philo->timer.last_meal, NULL);
 	gettimeofday(&philo->timer.s_start_time, NULL);
+	granular_usleep((philo->context->param.time_const.time_to_eat / 2) * USEC_PER_MSEC, philo);
 }
 
 t_philo	*philo_change_state(t_philo	*philo)

@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 14:48:04 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/02 22:39:50 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/03 03:47:33 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,9 @@ t_context	*context_init(int argc, char **argv)
 	t_param		param;
 	int	ret;
 
-	param = parsing(argc, argv);
+	param = parsing(argc, argv, &ret);
+	if (ret == 1)
+		return (NULL);
 	context = malloc(sizeof(t_context));
 	if (context == NULL)
 		return (NULL);

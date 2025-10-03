@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 15:55:59 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/02 23:52:51 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/03 02:54:50 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define START_OFFSET 800000
 # define USEC_PER_SEC 1000000
 # define USEC_PER_MSEC 1000
-# define SLEEP_DELTA 100
+# define SLEEP_DELTA 1000
 
 typedef struct timeval	t_timeval;
 typedef struct s_fork	t_fork;
