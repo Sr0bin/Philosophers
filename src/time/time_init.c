@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:01:35 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/03 07:03:29 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/07 13:41:51 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@ int	time_threshold(t_timeval time_to_pass, t_timeval time_to_check)
 		return (0);
 	}
 	if (time_to_pass.tv_sec < time_to_check.tv_sec)
-	{
 		return (1);
-	}
 	return (0);
 }
 

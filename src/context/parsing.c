@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 15:12:44 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/07 13:12:40 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/07 13:45:43 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_input	input_init(int argc, char **argv)
 {
 	t_input	input;
 
-	if (argc < 5 || argc > 7)
+	if (argc < 5 || argc > 6)
 	{
 		input.philo_max = LONG_MAX;
 		return (input);
