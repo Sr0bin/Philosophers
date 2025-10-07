@@ -6,7 +6,7 @@
 #    By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/29 14:14:19 by rorollin          #+#    #+#              #
-#    Updated: 2025/10/03 07:21:09 by rorollin         ###   ########.fr        #
+#    Updated: 2025/10/07 14:24:52 by rorollin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -109,7 +109,6 @@ $(OBJ_DIR)/%.o: %.c
 clean:
 	@rm -rf $(OBJ_DIR)
 	@rm -rf .cache/
-	@rm -f .bonus
 	@echo "Cleaned !"
 
 fclean:
