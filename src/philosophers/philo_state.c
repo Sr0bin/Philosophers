@@ -6,13 +6,13 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:42:26 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/03 07:09:28 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/07 13:18:38 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	philo_eating(t_philo *philo)
+void	philo_eating_state(t_philo *philo)
 {
 	if (!philo_check_death(philo)
 		&& check_run(philo)
@@ -28,7 +28,7 @@ void	philo_eating(t_philo *philo)
 	}
 }
 
-void	philo_sleeping(t_philo *philo)
+void	philo_sleeping_state(t_philo *philo)
 {
 	if (!philo_check_death(philo)
 		&& check_run(philo)
@@ -40,7 +40,7 @@ void	philo_sleeping(t_philo *philo)
 	}
 }
 
-void	philo_thinking(t_philo *philo)
+void	philo_thinking_state(t_philo *philo)
 {
 	while (!philo_check_death(philo) && check_run(philo))
 	{

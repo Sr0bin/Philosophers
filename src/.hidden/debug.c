@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 20:33:00 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/03 07:20:53 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/07 13:26:54 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,18 +90,6 @@ void	print_fork_pair(const char *name, t_fork_pair *pair)
 		pair->right ? pair->right->index : -1,
 		(pair->right && pair->right->state.val) ? "taken" : "available");
 	printf("}\n");
-}
-
-// Print function for t_sim_state
-const char	*sim_state_to_string(t_sim_state state)
-{
-	if (state == PENDING)
-		return "PENDING";
-	if (state == STARTED)
-		return "STARTED";
-	if (state == FINISHED)
-		return "FINISHED";
-	return "UNKNOWN";
 }
 
 // Print function for t_time_const

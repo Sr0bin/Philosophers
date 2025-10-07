@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 14:48:04 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/03 07:03:12 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/07 13:11:31 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	*context_destroy(t_context **context_ptr)
 	if (context->fork_head != NULL)
 		fork_list_destroy(&context->fork_head);
 	mutex_bool_destroy(&context->write_mutex);
+	mutex_bool_destroy(&context->running);
 	mutex_int_destroy(&context->philo_meal_max);
 	free(context);
 	*context_ptr = NULL;

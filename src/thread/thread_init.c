@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 14:44:18 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/03 07:30:30 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/07 13:18:38 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ void	philo_loop(t_philo	*philo)
 	while (!philo_check_death(philo) && check_run(philo) == true)
 	{
 		if (philo->state == EATING)
-			philo_eating(philo);
+			philo_eating_state(philo);
 		else if (philo->state == SLEEPING)
-			philo_sleeping(philo);
+			philo_sleeping_state(philo);
 		else if (philo->state == THINKING)
-			philo_thinking(philo);
+			philo_thinking_state(philo);
 		usleep(1000);
 	}
 }

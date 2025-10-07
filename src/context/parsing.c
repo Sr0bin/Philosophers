@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 15:12:44 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/03 07:18:37 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/07 13:12:40 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ t_input	input_init(int argc, char **argv)
 	t_input	input;
 
 	if (argc < 5 || argc > 7)
-		exit(EXIT_FAILURE);
+	{
+		input.philo_max = LONG_MAX;
+		return (input);
+	}
 	input.philo_max = ft_atoi(argv[1]);
 	input.time_to_die = ft_atoi(argv[2]);
 	input.time_to_eat = ft_atoi(argv[3]);
