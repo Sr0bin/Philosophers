@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 15:55:59 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/03 07:18:24 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/07 13:30:59 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,15 @@ typedef struct timeval	t_timeval;
 typedef struct s_fork	t_fork;
 typedef struct s_philo	t_philo;
 
+/**
+ *                  _            
+ *      /\/\  _   _| |_ _____  __
+ *     /    \| | | | __/ _ \ \/ /
+ *    / /\/\ \ |_| | ||  __/>  < 
+ *    \/    \/\__,_|\__\___/_/\_\
+ *                               
+ */
+
 typedef struct s_int_mutex
 {
 	pthread_mutex_t	mutex;
@@ -37,6 +46,15 @@ typedef struct s_mutex_bool
 	pthread_mutex_t	mutex;
 	bool			val;
 }	t_mutex_bool;
+
+/**
+ *       ___          _        
+ *      / __\__  _ __| | _____ 
+ *     / _\/ _ \| '__| |/ / __|
+ *    / / | (_) | |  |   <\__ \
+ *    \/   \___/|_|  |_|\_\___/
+ *                             
+ */
 
 typedef struct s_fork
 {
@@ -51,12 +69,14 @@ typedef struct s_fork_pair
 	t_fork	*right;
 }	t_fork_pair;
 
-typedef enum e_sim_state
-{
-	PENDING,
-	STARTED,
-	FINISHED
-}	t_sim_state;
+/**
+ *     _____ _                
+ *    /__   (_)_ __ ___   ___ 
+ *      / /\/ | '_ ` _ \ / _ \
+ *     / /  | | | | | | |  __/
+ *     \/   |_|_| |_| |_|\___|
+ *                            
+ */
 
 typedef struct s_time_const
 {
@@ -71,6 +91,24 @@ typedef struct s_sim_time
 	t_timeval	sim_crnt;
 }	t_sim_time;
 
+typedef struct s_timer
+{
+	t_timeval	last_meal;
+	t_timeval	s_start_time;
+	t_timeval	s_crnt_time;
+	t_timeval	w_start_time;
+	t_timeval	w_crnt_time;
+}	t_timer;
+
+/**
+ *      _____                   _   
+ *      \_   \_ __  _ __  _   _| |_ 
+ *       / /\/ '_ \| '_ \| | | | __|
+ *    /\/ /_ | | | | |_) | |_| | |_ 
+ *    \____/ |_| |_| .__/ \__,_|\__|
+ *                 |_|              
+ */
+
 typedef struct s_input
 {
 	size_t			philo_max;
@@ -79,12 +117,23 @@ typedef struct s_input
 	size_t			time_to_sleep;
 	long			max_meal;
 }	t_input;
+
 typedef struct s_param
 {
 	size_t			philo_max;
 	t_time_const	time_const;
 	int				max_meal;
 }	t_param;
+
+/**
+ *       ___            _            _   
+ *      / __\___  _ __ | |_ _____  _| |_ 
+ *     / /  / _ \| '_ \| __/ _ \ \/ / __|
+ *    / /__| (_) | | | | ||  __/>  <| |_ 
+ *    \____/\___/|_| |_|\__\___/_/\_\\__|
+ *                                       
+ */
+
 typedef struct s_context
 {
 	t_param			param;
@@ -96,6 +145,15 @@ typedef struct s_context
 	t_sim_time		sim_t;
 }	t_context;
 
+/**
+ *       ___ _     _ _       
+ *      / _ \ |__ (_) | ___  
+ *     / /_)/ '_ \| | |/ _ \ 
+ *    / ___/| | | | | | (_) |
+ *    \/    |_| |_|_|_|\___/ 
+ *                           
+ */
+
 typedef enum e_philo_state
 {
 	EATING,
@@ -103,15 +161,6 @@ typedef enum e_philo_state
 	SLEEPING,
 	DEAD
 }	t_philo_state;
-
-typedef struct s_timer
-{
-	t_timeval	last_meal;
-	t_timeval	s_start_time;
-	t_timeval	s_crnt_time;
-	t_timeval	w_start_time;
-	t_timeval	w_crnt_time;
-}	t_timer;
 
 typedef struct s_philo
 {

@@ -6,7 +6,7 @@
 /*   By: rorollin <rorollin@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 20:33:40 by rorollin          #+#    #+#             */
-/*   Updated: 2025/10/03 07:02:27 by rorollin         ###   ########.fr       */
+/*   Updated: 2025/10/07 13:26:54 by rorollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,5 @@ void		print_all_forks(t_fork *fork_head);
 void		print_all_philos(t_philo *philos, size_t count);
 void		print_context(t_context *ctx);
 
-const char	*sim_state_to_string(t_sim_state state);
 const char	*philo_state_to_string(t_philo_state state);
 #endif
